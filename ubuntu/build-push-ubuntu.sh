@@ -2,7 +2,7 @@
 docker build \
     --tag developassion/ubuntu:latest \
     --tag developassion/ubuntu:1.0 \
-    --file Dockerfile-ubuntu \
+    --file Dockerfile \
     .
 
 docker push developassion/ubuntu
