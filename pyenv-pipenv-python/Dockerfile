@@ -38,7 +38,7 @@ RUN apt-get update && apt-get -y install \
    zlib1g-dev \
    && apt-get autoremove -y \
    && apt-get clean \
-   && rm -rf /var/lib/apt/lists/* \
+   && rm -rf /var/lib/apt/lists/*
 
 USER dummyuser
 

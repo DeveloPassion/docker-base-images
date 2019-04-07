@@ -3,12 +3,14 @@ FROM ubuntu:18.04
 LABEL author="Sebastien Dubois <seb@dsebastien.net>"
 LABEL description="Base Ubuntu image"
 
-ENV HOME /home/dummyuser
+ENV USERNAME dummyuser
+
+ENV HOME /home/${USERNAME}
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
 
-RUN groupadd -g 1337 dummyuser && \
-    useradd -r -u 1337 -g dummyuser dummyuser
+RUN groupadd -g 1337 ${USERNAME} && \
+    useradd -r -u 1337 -g ${USERNAME} ${USERNAME}
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -27,4 +29,4 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
    ca-certificates && \
    apt-get update && apt-get -y install
 
-USER dummyuser
+USER ${USERNAME}
