@@ -4,6 +4,7 @@ LABEL author="Sebastien Dubois <seb@dsebastien.net>"
 LABEL description="Base Ubuntu image"
 
 ENV USERNAME dummyuser
+ENV DEFAULTUSER=${USERNAME}
 
 ENV HOME /home/${USERNAME}
 ENV LC_ALL C.UTF-8

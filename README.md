@@ -4,7 +4,7 @@ A few base images.
 Image that includes a "dummyuser" to avoid running as root.
 The image is configured for non-interactive use, enables installing packages over HTTPS and uses bash as default shell.
 
-The username is exposed as the USERNAME environment variable.
+The username is exposed as the DEFAULTUSER environment variable.
 
 ## Pyenv pipenv python
 Image that installs pyenv, then uses it to install the specified version of python, along with pip and pipenv.
