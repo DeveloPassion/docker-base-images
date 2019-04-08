@@ -26,15 +26,17 @@ In the target Dockerfile, just copy files from this image as follows:
 ```
 FROM developassion/pyenv-pipenv-python:${BUILD_PYTHON_VERSION} as base_image_python
 ...
-USER dummyuser
+USER ${DEFAULTUSER}
 
 # extract binaries from our base python image
-# get python and pip
-COPY --chown=${USERNAME} --from=base_image_python ${HOME}/.pyenv ./.pyenv
+# get pyenv, python, pipenv and pip
+COPY --chown=dummyuser:dummyuser --from=base_image_python ${HOME}/.pyenv ./.pyenv
 # get pipenv
-COPY --chown=${USERNAME} --from=base_image_python ${HOME}/.local ./.local
+COPY --chown=dummyuser:dummyuser --from=base_image_python ${HOME}/.local ./.local
 
-COPY --chown=${USERNAME} --from=base_image_python ${HOME}/.bashrc ./.bashrc
+COPY --chown=dummyuser:dummyuser --from=base_image_python ${HOME}/.bashrc ./.bashrc
 ```
 
 The username is simply the default one from the Ubuntu image above.
+
+For now, we have to hardcode the username. This will change when this is supported: https://github.com/moby/moby/issues/35018. At that point you should be able to replace the username by ${DEFAULTUSER}
