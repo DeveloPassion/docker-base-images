@@ -22,25 +22,16 @@ USER root
 
 RUN apt-get update && apt-get -y install \
    build-essential \
-   curl \
-   git \
-   libbz2-dev \
-   libcurl4-openssl-dev \
    libncurses5-dev \
    libreadline-dev \
    libsqlite3-dev \
-   libssl-dev \
-   libzmq3-dev \
    llvm \
    make \
-   wget \
    xz-utils \
    zlib1g-dev \
    && apt-get autoremove -y \
    && apt-get clean \
    && rm -rf /var/lib/apt/lists/*
-
-USER dummyuser
 
 RUN curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash \
    && pyenv install ${PYTHON_VERSION} \
